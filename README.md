@@ -1,5 +1,5 @@
 # Eli-Index
-Previously I wrote (https://github.com/maksimpiriyev/Search-As-You-Type-Index-master) about fast prefix search for ~10,000 key-value pairs designed for mobile,Now,Eli-Index designed to handle more than 1,000,000 key-value pairs,make fast prefix search on them,and furthermore bring the most ranked one from index.
+Previously I wrote (https://github.com/maksimpiriyev/Search-As-You-Type-Index-master) about fast prefix search for ~10,000 key-value pairs designed for mobile,Now,Eli-Index designed to handle more than 1,000,000 key-value pairs,make fast prefix search on them,and furthermore bring the most ranked one from index.It stores index and data at the same time on drive not in RAM (caches the nodes while it needs)
 
 # Eli-Index: String Prefix search Index for the ranked keywords optimized for mobile and has zero lag initialization time.
 
