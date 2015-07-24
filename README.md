@@ -32,8 +32,8 @@ Its usage :
 	cout << xx.treeHeight() << endl;
 
 	xx.add(L"predict");
-	xx.add(L"predict");
-	auto xff = xx.search(L"air",100);
+	xx.add(L"prediction");
+	auto xff = xx.search(L"pre",100);
 	for (size_t j = 0; j < xff.size(); j++)
 	{
 		wcout << std::get<1>(xff[j]) << endl;
