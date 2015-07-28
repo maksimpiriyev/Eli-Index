@@ -39,10 +39,20 @@ Its usage :
 	}
 	
 ```
+
+# Prefix Search with AVL Tree
+Note that AVL Treee is the same as it was with same operations,but Prefix Search on AVL Tree is little bit different than prefix search on Trie.
+
+
+# Top K Ranks with Segmented Tree
+Segmented Tree is well known structure to find the min-max values in any tree. Eli-Index iterates between top min-max values using heap.
+
 #Insert Comlexity
 Insert complexity is as same as the AVL tree O(logN)
+
 # Search Complexity for top K words
-O(K* lgK* lgN* lglgN) .
+Segmented Tree has the O(logN) complexity for finding the node with maximum rank value,using heap and finding next K-1 complexity brings extra O(lgK*lglgN) overhead 
+Total Complexity: O(K* lgK* lgN* lglgN) .
 
 
 # Eli-Index vs SQL
