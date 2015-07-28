@@ -42,7 +42,7 @@ Its usage :
 #Insert Comlexity
 Insert complexity is as same as the AVL tree O(logN)
 # Search Complexity for top K words
-O(K*lgK*lgN*lglgN) .
+O(K* lgK* lgN* lglgN) .
 
 
 # Eli-Index vs SQL
