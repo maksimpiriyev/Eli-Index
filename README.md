@@ -62,6 +62,9 @@ Insert complexity is as same as the AVL tree O(logN)
 Segmented Tree has the O(logN) complexity for finding the node with maximum rank value,using heap and finding next K-1 complexity brings extra O(lgK*lglgN) overhead.
 > Total Complexity: O(K* lgK* lgN* lglgN) .
 
+### Compilation
+It is written in C++11.
+> g++ -Ofast -std=c++11 -o prog main.cpp TreeFile.cpp
 
 ### Eli-Index vs SQL
 Note that nowadays most of the databases have prefix search with their full-text search functionality.Lets say you have more than 1,000,000 words and 100,000 of them starts with "a*" and you want search all of them ordered by their rank.This time Eli-Index and SQL will have very similar performance results.But If you search top 10 ranked(user-defined) results from these 100,000 words then Eli-Index will drammatically beat SQL,because SQL is abstract it retrieves and the sorts for column and gets top results, instead El-Index finds top nodes first by default
