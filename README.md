@@ -4,7 +4,8 @@ Previously I wrote (https://github.com/maksimpiriyev/Search-As-You-Type-Index-ma
 
 Most of the prefix search indices are designed for server side use,they store index in the RAM so that has intialization latency which prenvents opening application more faster in mobile.Eli-Index is designed to overcome this problem.
 Eli-Index is designed over AVL Tree,Segmented Tree and Heap.Its nodes has the features of both AVL Tree and Segmented Tree.It makes prefix search over AVL Tree ,and gets the result list in sorted order while iterating on the nodes of segmented tree with the help of heap.  It might also be the first AVL Tree implemented for string prefix search as I couldn't find any paper or implementation that use AVL Tree for string Prefix Search. Eli-Index has preferred to use AVL Tree instead of Trie Index because if Trie Index is implemented in Hard Drive,Either it is fast and uses more memory or it is slower because of more random file access.
-Class structure:
+
+### Class structure:
 ```c++
   class TreeIndex{
 	
@@ -15,7 +16,7 @@ Class structure:
 		vector<tuple<long, wstring,long > > search(wstring txt, int maxCount = 100);
 		vector<wstring> searchOnlyString(wstring txt, int maxCount = 100);
 		tuple<long, wstring,long >* find(wstring txt);
-		void add(wstring txt, long statCount = 1);
+		void add(wstring txt, long statCount = 1/*rank*/,long value = 0);
 		void loadNgram(string fileName, int ngram);
 		void loadTopWords(string fileName,int maxCount=-1);
 		bool isExist(wstring s);
@@ -40,23 +41,23 @@ Its usage :
 	
 ```
 
-# Prefix Search with AVL Tree
+### Prefix Search with AVL Tree
 Note that AVL Treee is the same as it was with same operations,but Prefix Search on AVL Tree is little bit different than prefix search on Trie.
 
 
-# Top K Ranks with Segmented Tree
+### Top K Ranks with Segmented Tree
 Segmented Tree is well known structure to find the min-max values in any tree. Eli-Index iterates between top min-max values using heap.
 
-#Insert Comlexity
+### Insert Comlexity
 Insert complexity is as same as the AVL tree O(logN)
 
-# Search Complexity for top K words
-Segmented Tree has the O(logN) complexity for finding the node with maximum rank value,using heap and finding next K-1 complexity brings extra O(lgK*lglgN) overhead 
-Total Complexity: O(K* lgK* lgN* lglgN) .
+### Search Complexity for top K words
+Segmented Tree has the O(logN) complexity for finding the node with maximum rank value,using heap and finding next K-1 complexity brings extra O(lgK*lglgN) overhead.
+> Total Complexity: O(K* lgK* lgN* lglgN) .
 
 
-# Eli-Index vs SQL
+### Eli-Index vs SQL
 Note that nowadays most of the databases have prefix search with their full-text search functionality.Lets say you have more than 1,000,000 words and 100,000 of them starts with "a*" and you want search all of them ordered by their rank.This time Eli-Index and SQL will have very similar performance results.But If you search top 10 ranked(user-defined) results from these 100,000 words then Eli-Index will drammatically beat SQL,because SQL is abstract it retrieves and the sorts for column and gets top results, instead El-Index finds top nodes first by default
 
-# OS Caches and Initial Latency
+### OS Caches and Initial Latency
 Some  Operating Systems caches whole file before you access it,and it brings extra latency in the first search,but meanwhile makes faster the other searches.But, you can use fadvise,fcntrl etc to disable cache or tell the read pattern is random
