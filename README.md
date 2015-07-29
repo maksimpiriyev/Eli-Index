@@ -1,5 +1,5 @@
 # Eli-Index : Ranked Prefix Search for Large Data on External Memory
-Previously I wrote (https://github.com/maksimpiriyev/Search-As-You-Type-Index-master) about fast prefix search for ~10,000 key-value pairs designed for mobile,Now,Eli-Index designed to handle more than 1,000,000 key-value pairs,make fast prefix search on them,and furthermore bring the most ranked one from index.It stores index and data at the same time on drive not in RAM (caches the nodes while it needs)
+Previously I wrote (https://github.com/maksimpiriyev/Search-As-You-Type-Index-master) about fast prefix search for ~10,000 key-value pairs designed for mobile.Now,Eli-Index designed to handle more than 1,000,000 key-value pairs,make fast prefix search on them,and furthermore bring the most ranked one from index.It stores index and data at the same time on external memory not in RAM (caches the nodes while it needs)
 
 
 Most of the prefix search indices are designed for server side use,they store index in the RAM so that has intialization latency which prenvents opening application more faster in mobile.Eli-Index is designed to overcome this problem.
@@ -59,5 +59,5 @@ Segmented Tree has the O(logN) complexity for finding the node with maximum rank
 ### Eli-Index vs SQL
 Note that nowadays most of the databases have prefix search with their full-text search functionality.Lets say you have more than 1,000,000 words and 100,000 of them starts with "a*" and you want search all of them ordered by their rank.This time Eli-Index and SQL will have very similar performance results.But If you search top 10 ranked(user-defined) results from these 100,000 words then Eli-Index will drammatically beat SQL,because SQL is abstract it retrieves and the sorts for column and gets top results, instead El-Index finds top nodes first by default
 
-### OS Caches and Initial Latency
-Some  Operating Systems caches whole file before you access it,and it brings extra latency in the first search,but meanwhile makes faster the other searches.But, you can use fadvise,fcntrl etc to disable cache or tell the read pattern is random
+### OS Cache and Initial Latency
+Some  Operating Systems has the policy to cache whole file at first before you access it,and it brings extra latency in the first operation,but meanwhile makes faster the other searches.But, you can use fadvise,fcntrl etc to disable cache or tell the read pattern is random.
