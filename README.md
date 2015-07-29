@@ -44,15 +44,16 @@ Its usage :
 ### Prefix Search with AVL Tree
 Note that AVL Tree is the same as it was with same operations,but Prefix Search on AVL Tree is little bit different than prefix search on Trie.Lets say we are searching the prefix P.We always compare the prefix of the text in the node with length |P|.
 
->If node N is greater than the prefix then its right nodes do not contain that prefix. <br/>
->If node N is smaller than the prefix then its left nodes do not contain that prefix.
+> * If node N is greater than the prefix then its right nodes do not contain that prefix. <br/>
+> * If node N is smaller than the prefix then its left nodes do not contain that prefix. <br/>
+> * The case that left node is smaller than P and right node is greater than P might exists only at the node itself or (either in left subtree or in right subtree),but not left and right subtree at the same time.This is why the complexity is logN not 2^N
 ![alt tag](https://raw.githubusercontent.com/maksimpiriyev/Eli-Index/master/treesearch.png)
 
 
 ### Top K Ranks with Segmented Tree
 Segmented Tree is well known structure to find the min-max values in any tree. Eli-Index iterates between top min-max values using heap.
->Why it has the complexity logN not 2^N while searching one element?-A node that has prefix P can not have a parent(or one of the parents) node more than once that has right node greater than P and left node smaller than P at the same time.Fail scenarios that go till leaf is one or two not whole nodes.<br/>
->Adding (K+1)th element to the heap and removing the least element guarantees that heap has  the top K elements.
+
+> * Adding (K+1)th element to the heap and removing the least element guarantees that heap has  the top K elements.
 ![alt tag](https://raw.githubusercontent.com/maksimpiriyev/Eli-Index/master/noderank.png)
 
 ### Insert Comlexity
@@ -62,9 +63,12 @@ Insert complexity is as same as the AVL tree O(logN)
 Segmented Tree has the O(logN) complexity for finding the node with maximum rank value,using heap and finding next K-1 complexity brings extra O(lgK*lglgN) overhead.
 > Total Complexity: O(K* lgK* lgN* lglgN) .
 
+### Compilation
+It is written in C++11.
+> g++ -Ofast -std=c++11 -o prog main.cpp TreeFile.cpp
 
 ### Eli-Index vs SQL
-Note that nowadays most of the databases have prefix search with their full-text search functionality.Lets say you have more than 1,000,000 words and 100,000 of them starts with "a*" and you want search all of them ordered by their rank.This time Eli-Index and SQL will have very similar performance results.But If you search top 10 ranked(user-defined) results from these 100,000 words then Eli-Index will drammatically beat SQL,because SQL is abstract it retrieves and the sorts for column and gets top results, instead El-Index finds top nodes first by default
+Note that nowadays most of the databases have prefix search with their full-text search functionality.Lets say you have more than 1,000,000 words and 100,000 of them starts with "a*" and you want search all of them ordered by their rank.This time Eli-Index and SQL will have very similar performance results.But If you search top 10 ranked(user-defined) results from these 100,000 words then Eli-Index will drammatically beat SQL,because SQL is abstract it retrieves and then sorts for column and gets top results, instead El-Index finds top nodes first by default
 
 ### OS Cache and Initial Latency
 Some  Operating Systems has the policy to cache whole file at first before you access it,and it brings extra latency in the first operation,but meanwhile makes faster the other searches.But, you can use fadvise,fcntrl etc to disable cache or tell the read pattern is random.
