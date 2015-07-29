@@ -46,7 +46,7 @@ Note that AVL Tree is the same as it was with same operations,but Prefix Search 
 
 > * If node N is greater than the prefix then its right nodes do not contain that prefix. <br/>
 > * If node N is smaller than the prefix then its left nodes do not contain that prefix. <br/>
-> * The case that left node ismaller than P and right node is greater than P might exists only at the node itself or (either in left subtree or in right subtree),but not left and right subtree at the same time.This is why the complexity is logN not 2^N
+> * The case that left node is smaller than P and right node is greater than P might exists only at the node itself or (either in left subtree or in right subtree),but not left and right subtree at the same time.This is why the complexity is logN not 2^N
 ![alt tag](https://raw.githubusercontent.com/maksimpiriyev/Eli-Index/master/treesearch.png)
 
 
@@ -68,7 +68,7 @@ It is written in C++11.
 > g++ -Ofast -std=c++11 -o prog main.cpp TreeFile.cpp
 
 ### Eli-Index vs SQL
-Note that nowadays most of the databases have prefix search with their full-text search functionality.Lets say you have more than 1,000,000 words and 100,000 of them starts with "a*" and you want search all of them ordered by their rank.This time Eli-Index and SQL will have very similar performance results.But If you search top 10 ranked(user-defined) results from these 100,000 words then Eli-Index will drammatically beat SQL,because SQL is abstract it retrieves and the sorts for column and gets top results, instead El-Index finds top nodes first by default
+Note that nowadays most of the databases have prefix search with their full-text search functionality.Lets say you have more than 1,000,000 words and 100,000 of them starts with "a*" and you want search all of them ordered by their rank.This time Eli-Index and SQL will have very similar performance results.But If you search top 10 ranked(user-defined) results from these 100,000 words then Eli-Index will drammatically beat SQL,because SQL is abstract it retrieves and then sorts for column and gets top results, instead El-Index finds top nodes first by default
 
 ### OS Cache and Initial Latency
 Some  Operating Systems has the policy to cache whole file at first before you access it,and it brings extra latency in the first operation,but meanwhile makes faster the other searches.But, you can use fadvise,fcntrl etc to disable cache or tell the read pattern is random.
