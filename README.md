@@ -42,7 +42,7 @@ Its usage :
 ```
 
 ### Prefix Search with AVL Tree
-Note that AVL Tree is the same as it was with same operations,but Prefix Search on AVL Tree is little bit different than prefix search on Trie.Lets say we are searching the prefix P.We always compare the prefix of the text in the node with length |P|.
+Note that AVL Tree is the same as it was with same operations,but Prefix Search on AVL Tree is little bit different than the regular search on AVL Tree.Lets say we are searching the prefix P.We always compare the prefix of the text in the node with length |P|.
 
 > * If node N is greater than the prefix then its right nodes do not contain that prefix. <br/>
 > * If node N is smaller than the prefix then its left nodes do not contain that prefix. <br/>
