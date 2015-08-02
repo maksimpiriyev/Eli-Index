@@ -72,3 +72,6 @@ Note that nowadays most of the databases have prefix search with their full-text
 
 ### OS Cache and Initial Latency
 Some  Operating Systems has the policy to cache whole file at first acess before you do any operation on it (OS-wide first access),and it brings extra latency in the first operation,but meanwhile makes faster the other searches.But, you can use fadvise,fcntrl etc to disable cache or tell the read pattern is random.
+
+### Apps that use this index
+Typing auto-complete for mac : http://elithetyper.com
