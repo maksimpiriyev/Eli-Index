@@ -71,7 +71,7 @@ It is written in C++11.
 Note that nowadays most of the databases have prefix search with their full-text search functionality.Lets say you have more than 1,000,000 words and 100,000 of them starts with "a*" and you want search all of them ordered by their rank.This time Eli-Index and SQL will have very similar performance results.But If you search top 10 ranked(user-defined) results from these 100,000 words then Eli-Index will drammatically beat SQL,because SQL is abstract it retrieves and then sorts for column and gets top results, instead El-Index finds top nodes first by default
 
 ### OS Cache and Initial Latency
-Some  Operating Systems has the policy to cache whole file at first acess before you do any operation on it (OS-wide first access),and it brings extra latency in the first operation,but meanwhile makes faster the other searches.But, you can use fadvise,fcntrl etc to disable cache or tell the read pattern is random.
+Some  Operating Systems has the policy to cache whole file at first acess before you do any operation on it (OS-wide first access),and it brings extra latency in the first operation,but meanwhile makes faster the other operations.But, you can use fadvise,fcntrl etc to disable cache or tell the read pattern is random.
 
 ### Apps that use this index
 Typing auto-complete for mac : http://elithetyper.com
