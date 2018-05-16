@@ -75,3 +75,5 @@ Some  Operating Systems has the policy to cache whole file at first acess before
 
 ### Apps that use this index
 Typing auto-complete for mac : http://elithetyper.com
+
+by Maksim Piriyev
